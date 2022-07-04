@@ -1,0 +1,8 @@
+flask==1.1.2
+numpy==1.21.3
+matplotlib==3.5.1
+wfdb==3.4.1
+scipy==1.4.1
+requests==2.25.1
+flask_sqlalchemy==2.5.1
+torch==1.7.1+cu110

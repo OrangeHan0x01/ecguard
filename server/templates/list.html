@@ -1,0 +1,65 @@
+{% extends "bootstrap/base.html"  %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}ECG管理系统{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
+
+{%block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+			</button>
+			<a class="navbar-brand" href="/">ECG管理系统</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/index">首页</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+
+{%block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning"><button type="button" class="close" data-dismiss="alert">&times;</button>{{ message }}</div>
+    {% endfor %}
+</div>
+<div class="container">
+	<h2>数据</h2>   
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>用户</th>
+				<th>时间</th>
+				<th>识别结果</th>
+				<th>详细界面</th>
+				<th>智能识别</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for post in posts %}
+				<tr>
+					<td>{{post.id}}</td>
+					<td>{{post.uid}}</td>
+					<td>{{moment(post.timestamp).format('L')}}</td>
+					<td>{{post.result}}</td>
+					<td><a href="data?id={{post.id}}"><p type="button" class="btn btn-default btn-sm">详情</p></a></td>
+					<td><a href="rec?id={{post.id}}"><p type="button" class="btn btn-default btn-sm">识别</p></a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{%import '_macros.html' as pg%}
+{{pg.my_paginate(pagination,'index')}}
+{% endblock %}

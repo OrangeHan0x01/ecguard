@@ -1,0 +1,19 @@
+datas_store_shape: (15542, 8, 90)
+labels_store_shape: (15542,)
+异常数据量 4934
+正常数据量 10608
+
+修改后：
+标签为0： 5290
+标签为1： 4934
+总共： 10224
+
+混淆矩阵
+[*]init over.
+[*]data_len: 10224
+[*]label_len: 10224
+[*]run over.
+[+]conf2c_tt: 4312
+[+]conf2c_tf: 622
+[+]conf2c_ft: 340
+[+]conf2c_ff: 4950
